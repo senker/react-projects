@@ -8,4 +8,3 @@ Components advantages:
 
 Reusability - don't repeat yourself
 Separation of Concerns - don't do too many things in one and the same place (function)
-
