@@ -3,41 +3,45 @@ import React, { useState } from 'react';
 import "./ExpenseForm.css"
 
 const ExpenseForm = () => {
-// By one
-    /*     const [enteredTitle, setEnteredTitle] = useState('');
+// Individual state
+    const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmount] = useState('');
-    const [enteredDate, setEnteredDate] = useState(''); */
-// Grouped states
-
-    const [userInput, setUserInput] = useState({
+    const [enteredDate, setEnteredDate] = useState(''); 
+// Common states
+/*     const [userInput, setUserInput] = useState({
         enteredTitle: '',
         enteredAmount: '',
         enteredDate: ''
-    })
+    }) */
 
     const titleChangeHandler = (event) => {
-        //By one
-        /* setEnteredTitle(event.target.value); */
-        setUserInput({
+        //From individual state
+         setEnteredTitle(event.target.value); 
+        //From common state - possible to depend on outdated or incorrect state snapshot
+/*         setUserInput({
             ...userInput,
             enteredTitle: event.target.value
-        })
+        }) */
+        // React guarantees that the state snapshot offered here is latest
+/*         setUserInput((prevState) => {
+            return {...prevState, enteredTitle: event.target.value}
+        }); */
     };
 
     const amountChangeHandler = (event) => {
-        /* setEnteredAmount(event.target.value); */
-        setUserInput({
+        setEnteredAmount(event.target.value);
+/*         setUserInput({
             ...userInput,
             enteredAmount: event.target.value
-        })
+        }) */
     };
 
     const dateChangeHandler = (event) => {
-        /* setEnteredDate(event.taget.value); */
-        setUserInput({
+        setEnteredDate(event.taget.value);
+/*         setUserInput({
             ...userInput,
             enteredDate: event.target.value
-        })
+        }) */
     }
 
     return <form>
