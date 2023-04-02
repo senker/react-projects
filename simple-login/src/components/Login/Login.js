@@ -11,6 +11,14 @@ const Login = (props) => {
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
+
+  // 1. this runs every time after all components render cycle
+  // 2. adding empty dependency will run only at the first component render cycle
+  // 3. adding specific dependencies such as enteredEmail etc. will run it when those components re-render
+  useEffect(() => {
+    console.log('EFFECT RUNNING');
+  })
+
   useEffect(() => {
     const identifier = setTimeout(() => {
       console.log("Checking form validity");
