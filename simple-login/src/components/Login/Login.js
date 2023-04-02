@@ -18,7 +18,7 @@ const passwordReducer = (state, action) => {
   if (action.type === "USER_INPUT") {
     return { value: action.val, isValid: action.val.trim().length > 6 };
   }
-  if (action.type === "PASSWORD_BLUR") {
+  if (action.type === "INPUT_BLUR") {
     return { value: state.value, isValid: state.value.trim().length > 6 };
   }
   return { value: "", isValid: false };
@@ -84,7 +84,7 @@ const Login = (props) => {
   };
 
   const validatePasswordHandler = () => {
-    dispatchPassword({ type: "PASSWORD_BLUR" });
+    dispatchPassword({ type: "INPUT_BLUR" });
   };
 
   const submitHandler = (event) => {
