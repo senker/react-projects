@@ -17,6 +17,11 @@ const Login = (props) => {
   // 3. adding specific dependencies such as enteredEmail etc. will run it when those components re-render
   useEffect(() => {
     console.log('EFFECT RUNNING');
+    // 1. effect cleanup runs in case of a dependency, every time after that component has been re-rendered
+    // 2. in case of no dependencies it runs when the component is rerendered first time and when it is removed from the DOM
+    return () => {
+      console.log('EFFECT CLEANUP');
+    };
   })
 
   useEffect(() => {
