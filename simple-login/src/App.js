@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import MainHeader from "./components/MainHeader/MainHeader";
+import AuthContext from "./store/auth-context";
 
 function App() {
   const storedUserLoggedInInformation = localStorage.getItem("isLoggedIn");
@@ -13,7 +14,7 @@ function App() {
     if (storedUserLoggedInInformation === "1") {
       setIsLoggedIn(true);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loginHandler = (email, password) => {
@@ -24,18 +25,18 @@ function App() {
   };
 
   const logoutHandler = () => {
-    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem("isLoggedIn");
     setIsLoggedIn(false);
   };
 
   return (
-    <React.Fragment>
-      <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
+    <AuthContext.Provider value={{ isLoggedIn: isLoggedIn }}>
+      <MainHeader onLogout={logoutHandler} />
       <main>
         {!isLoggedIn && <Login onLogin={loginHandler} />}
         {isLoggedIn && <Home onLogout={logoutHandler} />}
       </main>
-    </React.Fragment>
+    </AuthContext.Provider>
   );
 }
 
