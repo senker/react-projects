@@ -12,6 +12,8 @@ function App() {
 
   const toggleParagraphHandler = useCallback(() => {
     if (allowToggle) {
+      // recommended way of depending on the previous state snapshot
+      // safe way of ensuring that state changes are processed in order
       setShowParagraph((prevShowParagraph) => !prevShowParagraph);
     }
   }, [allowToggle]);
